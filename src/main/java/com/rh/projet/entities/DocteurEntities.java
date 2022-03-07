@@ -1,8 +1,14 @@
-package java.com.rh.projet.entities;
+package com.rh.projet.entities;
 
 import java.sql.Date;
 
-@Entities
+import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
 @Table(name="Docteur")
 public class DocteurEntities {
 

@@ -1,9 +1,11 @@
-package java.com.rh.projet.controller;
+package com.rh.projet.controller;
 
-import java.com.rh.projet.entities.Patient;
-import java.com.rh.projet.service.PatientService;
+import com.rh.projet.entities.Patient;
+import com.rh.projet.entities.PatientEntities;
+import com.rh.projet.service.PatientService;
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ public class PatientController {
     //Lister Tous les employes
     @GetMapping("/")
     public String ViewHomePage(Model model){
-        ListPatient = service.listAll();
+        ListPatient = service.ListAll();
         model.addAttribute("listePatient",ListPatient);
         System.out.println("Get / ");
         return "index";
@@ -41,11 +43,9 @@ public class PatientController {
         return "new";
     }
 //Sauvegarder Patient 
-    @GetMapping(value="/save",method = @RequestMethod.POST)
+    @GetMapping(value="/save", method = @RequestMethod.POST)
     public String SavePatient(@ModelAttribute("Patient") PatientEntities p){
-        service.save(p);
-        model.addAttribute("listePatient",ListPatient);
-        System.out.println("Get / ");
+        service.Save(p);
         return "redirect:/";
     } 
 
@@ -61,7 +61,7 @@ public class PatientController {
 //Supprimer une employe grace a son id
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable(name="id")int id){
-        service.delete(id);
+        service.Delete(id);
         
         return "redirect:/";
     }

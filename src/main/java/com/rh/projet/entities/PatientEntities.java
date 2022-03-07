@@ -1,8 +1,14 @@
-package java.com.rh.projet.entities;
+package com.rh.projet.entities;
 
 import java.util.Date;
 
-@Entities
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
 @Table(name="Patient")
 public class PatientEntities {
 
@@ -13,18 +19,20 @@ public class PatientEntities {
     String prenom;
     Date date_naissance;
     String sexe;
+    String Photo;
 
 
     public PatientEntities(){
 
     }
 
-    public PatientEntities(String nom,String prenom,Date d,String sexe){
+    public PatientEntities(String nom,String prenom,Date d,String sexe,String Photo){
         
         this.nom=nom;
         this.prenom=prenom;
         this.date_naissance=d;
         this.sexe=sexe;
+        this.Photo=Photo;
     }
     public void setid(int id){
         this.id=id;
@@ -43,6 +51,9 @@ public class PatientEntities {
     public void setsexe(String sexe){
         this.sexe=sexe;
     }
+    public void setphoto(String photo){
+        this.Photo=photo;
+    }
 
     public int getid(){
         return this.id;
@@ -58,6 +69,9 @@ public class PatientEntities {
     }
     public String getsexe(){
         return this.sexe;
+    }
+    public String getphoto(){
+        return this.Photo;
     }
 
 }

@@ -1,10 +1,10 @@
-package java.com.rh.projet.service;
+package com.rh.projet.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.com.rh.projet.repositories.PatientRepository;
-import java.com.rh.projet.entities.Patient;
+import com.rh.projet.repositories.PatientRepository;
+import com.rh.projet.entities.PatientEntities;
 
 @Service
 public class PatientService {
@@ -18,10 +18,10 @@ public class PatientService {
     public void Save(PatientEntities p){
          repo.save(p);
     }
-    public void Delete(PatientEntities p){
-        repo.deleteByid(p);
+    public void Delete(int p){
+        repo.deleteById(p);
     } 
-    public PatientEntities Find(long id){
+    public PatientEntities Find(int id){
         return repo.findByid(id);
     }
 }

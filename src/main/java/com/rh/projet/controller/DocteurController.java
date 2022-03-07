@@ -1,9 +1,11 @@
-package java.com.rh.projet.controller;
+package com.rh.projet.controller;
 
-import java.com.rh.projet.entities.Docteur;
-import java.com.rh.projet.service.DocteurService;
+import com.rh.projet.entities.Docteur;
+import com.rh.projet.entities.DocteurEntities;
+import com.rh.projet.service.DocteurService;
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+@Controller
 public class DocteurController {
 
 
@@ -39,8 +42,7 @@ public class DocteurController {
 //Sauvegarder Docteur 
     @GetMapping(value="/save", method = @RequestMethod.POST)
     public String SaveDocteur(@ModelAttribute("Docteur") DocteurEntities doc){
-        service.save(doc);
-        model.addAttribute("listeDocteur",listDocteur);
+        service.Save(doc);
         System.out.println("Get / ");
         return "redirect:/";
     } 
@@ -51,13 +53,13 @@ public class DocteurController {
         ModelAndView mav = new ModelAndView("new");
         DocteurEntities doc=service.get(id);
         mav.addObject("Docteur",doc);
-        return "mav";
+        return "edit";
     } 
      
 //Supprimer une employe grace a son id
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable(name="id")int id){
-        service.delete(id);
+        service.Delete(id);
         
         return "redirect:/";
     }
