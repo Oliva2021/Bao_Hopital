@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class PatientController {
 
     @Autowired
-    List<PatientEntities> listPatient;
+    List<PatientEntities> ListPatient;
 
     @Autowired
     private PatientService service;
@@ -25,8 +25,8 @@ public class PatientController {
     //Lister Tous les employes
     @GetMapping("/")
     public String ViewHomePage(Model model){
-        listPatient = service.listAll();
-        model.addAttribute("listePatient",listPatient);
+        ListPatient = service.listAll();
+        model.addAttribute("listePatient",ListPatient);
         System.out.println("Get / ");
         return "index";
     } 
@@ -34,8 +34,8 @@ public class PatientController {
 //Ajouter une employe
     @GetMapping("/new")
     public String Add(Model model){
-        List<PatientEntities> listPatient = service.ListAll();
-        model.addAttribute("listPatient",listPatient);
+        List<PatientEntities> ListPatient = service.ListAll();
+        model.addAttribute("ListPatient",ListPatient);
         model.addAttribute("Patient",new PatientEntities());
 
         return "new";
@@ -44,7 +44,7 @@ public class PatientController {
     @GetMapping(value="/save",method = @RequestMethod.POST)
     public String SavePatient(@ModelAttribute("Patient") PatientEntities p){
         service.save(p);
-        model.addAttribute("listePatient",listPatient);
+        model.addAttribute("listePatient",ListPatient);
         System.out.println("Get / ");
         return "redirect:/";
     } 
