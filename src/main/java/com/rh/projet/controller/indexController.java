@@ -31,6 +31,6 @@ public class indexController {
      
          @PostMapping("/index/login")
          public RedirectView login(@RequestParam Map<String, Object> data, Model model, HttpSession session) {
-             return "login";
+             return new RedirectView("/index/login");
          }
 }
